@@ -5,14 +5,21 @@ import { GameStateContext } from '../Helper/Contexts';
 
 const Menu = () => {
 
-    const btnClickHandler(){
+    // get an instance of that context
+    const { gameState, setGameState } = useContext(GameStateContext);
 
-    }
 
     return (
         <div className="Menu">
-            <input type="text" placeholder="enter your name" />
-            <button onClick={btnClickHandler}>Start Quiz</button>
+            <input type="text"
+                placeholder="enter your name"
+            />
+
+            <button onClick={() => {
+
+                setGameState('play')
+            }}>
+                Start Quiz</button>
         </div>
     )
 }
