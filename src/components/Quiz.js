@@ -11,7 +11,7 @@ const Quiz = () => {
     const [currentQuestion, setCurrentQuestion] = useState(0);
     const [optionChosen, setOptionChosen] = useState("")
 
-    const { score, setScore } = useContext(GameStateContext)
+    const { gameState, setGameState, score, setScore } = useContext(GameStateContext)
 
 
     function chooseOption(option) {
@@ -26,6 +26,10 @@ const Quiz = () => {
         }
 
         setCurrentQuestion(currentQuestion + 1)
+    }
+
+    function finishQuiz() {
+        setGameState('finish');
     }
 
     return (
@@ -49,7 +53,18 @@ const Quiz = () => {
                 </button>
             </div>
 
-            <button onClick={nextQuestion}>Next Question</button>
+            {
+                currentQuestion == Questions.length - 1 ?
+                    (<button
+                        onClick={finishQuiz}>
+                        FinishQuiz
+                    </button>) :
+                    (
+                        <button onClick={nextQuestion}>Next</button>
+                    )
+
+            }
+
 
 
         </div>
