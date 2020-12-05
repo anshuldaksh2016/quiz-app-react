@@ -11,8 +11,20 @@ const Quiz = () => {
     const [currentQuestion, setCurrentQuestion] = useState(0);
     const [optionChosen, setOptionChosen] = useState("")
 
+
     function chooseOption(option) {
-        setOptionChosen(option)
+        setOptionChosen(option);
+
+    }
+
+    function nextQuestion() {
+        if (Questions[currentQuestion].answer == optionChosen) {
+            console.log("Correct!!!")
+        }
+        else {
+            console.log("incorrect")
+        }
+        setCurrentQuestion(currentQuestion + 1)
     }
 
     return (
@@ -35,7 +47,8 @@ const Quiz = () => {
                     {Questions[currentQuestion].optionD}
                 </button>
             </div>
-            {optionChosen}
+            <button onClick={nextQuestion}>Next Question</button>
+
 
         </div>
     )
