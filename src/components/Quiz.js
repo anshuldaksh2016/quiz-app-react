@@ -11,6 +11,8 @@ const Quiz = () => {
     const [currentQuestion, setCurrentQuestion] = useState(0);
     const [optionChosen, setOptionChosen] = useState("")
 
+    const { score, setScore } = useContext(GameStateContext)
+
 
     function chooseOption(option) {
         setOptionChosen(option);
@@ -20,10 +22,9 @@ const Quiz = () => {
     function nextQuestion() {
         if (Questions[currentQuestion].answer == optionChosen) {
             console.log("Correct!!!")
+            setScore(score + 1)
         }
-        else {
-            console.log("incorrect")
-        }
+
         setCurrentQuestion(currentQuestion + 1)
     }
 
@@ -47,6 +48,7 @@ const Quiz = () => {
                     {Questions[currentQuestion].optionD}
                 </button>
             </div>
+
             <button onClick={nextQuestion}>Next Question</button>
 
 

@@ -9,13 +9,14 @@ const App = () => {
 
   const [gameState, setGameState] = useState('menu');
   const [userName, setUserName] = useState("")
+  const [score, setScore] = useState(0);
   //make this a global state
 
 
   return (
     <div className="App">
       <h1>Quiz App</h1>
-      <GameStateContext.Provider value={{ gameState, setGameState, userName, setUserName }}>
+      <GameStateContext.Provider value={{ gameState, setGameState, userName, setUserName, score, setScore }}>
 
         {gameState === 'menu' && <Menu />}
         {gameState === 'play' && <Quiz />}
