@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import './App.css';
 import Menu from './components/Menu'
 import { GameStateContext } from './Helper/Contexts';
-
+import Quiz from './components/Quiz'
 
 //[menu , play  , finished]
 const App = () => {
@@ -16,12 +16,10 @@ const App = () => {
     <div className="App">
       <h1>Quiz App</h1>
       <GameStateContext.Provider value={{ gameState, setGameState, userName, setUserName }}>
-        {
-          gameState === 'menu' && (
-            <Menu />
-          )
-        }
-        {userName}
+
+        {gameState === 'menu' && <Menu />}
+        {gameState === 'play' && <Quiz />}
+
       </GameStateContext.Provider>
       {/* set the state accessible to each and every component  */}
 
