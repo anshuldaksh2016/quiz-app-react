@@ -20,7 +20,7 @@ const Quiz = () => {
     }
 
     function nextQuestion() {
-        if (Questions[currentQuestion].answer == optionChosen) {
+        if (Questions[currentQuestion].answer === optionChosen) {
             console.log("Correct!!!")
             setScore(score + 1)
         }
@@ -29,7 +29,12 @@ const Quiz = () => {
     }
 
     function finishQuiz() {
+        if (Questions[currentQuestion].answer === optionChosen) {
+
+            setScore(score + 1)
+        }
         setGameState('finish');
+
     }
 
     return (
@@ -55,12 +60,12 @@ const Quiz = () => {
 
             {
                 currentQuestion == Questions.length - 1 ?
-                    (<button
-                        onClick={finishQuiz}>
+                    (<button onClick={finishQuiz} id="nextQuestion">
                         FinishQuiz
-                    </button>) :
+                    </button>
+                    ) :
                     (
-                        <button onClick={nextQuestion}>Next</button>
+                        <button onClick={nextQuestion} id="nextQuestion">Next</button>
                     )
 
             }
